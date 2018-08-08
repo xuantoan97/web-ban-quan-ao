@@ -1,0 +1,87 @@
+﻿@model CongNgeWeb.Entities.THANHVIEN
+
+@{
+    ViewBag.Title = "Đăng Ký ";
+    var e = ViewBag.test;
+}
+
+<script>
+    var d = new Date();
+    var e = d.getMonth() + 1 + "-" + d.getDate() + "-" + d.getFullYear();
+    document.getElementById("demo").innerHTML = e;
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h5>Đăng Ký</h5>
+    <fieldset>
+        <legend>Đăng Ký</legend>
+        <div class="editor-label">
+            Tên thành viên
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TENTV)
+            @Html.ValidationMessageFor(model => model.TENTV)
+        </div>
+
+        <div class="editor-label">
+               email
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+
+        <div class="editor-label">
+            Địa chỉ
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DIACHI)
+            @Html.ValidationMessageFor(model => model.DIACHI)
+        </div>
+
+        <div class="editor-label">
+           Mật khẩu
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PASSWORD)
+            @Html.ValidationMessageFor(model => model.PASSWORD)
+        </div>
+
+        <div class="editor-label">
+            Ngày sinh
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NG)
+            @Html.ValidationMessageFor(model => model.NG)
+        </div>
+        <div class="editor-label">
+           Giới tính
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GT)
+            @Html.ValidationMessageFor(model => model.GT)
+
+        </div>
+         <div class="editor-label">
+           Số Điện Thoại
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SDT)
+            @Html.ValidationMessageFor(model => model.SDT)
+
+        </div>
+        <p>
+            <input type="submit" value="Đăng Ký" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index","Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

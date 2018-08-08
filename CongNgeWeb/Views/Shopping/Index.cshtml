@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Giỏ Hàng</h4>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+             Mã sản phẩm
+        </th>
+        <th>
+           Hình ảnh
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+             Giá
+        </th>
+        <th>
+          Số lượng
+        </th>
+        <th>
+            Thành Tiền
+        </th>
+    </tr>
+     @foreach (System.Data.DataRow dr in Model)  
+                    {  
+                        <tr>  
+                       
+                            <td> @dr["ID"].ToString() </td>  
+                           <td> <img src="@dr["Hình Ảnh"].ToString()" width="45" height="45" /></td>
+                           <td>@dr["Tên"].ToString()</td>
+                            <td>@dr["Giá"].ToString() VNĐ</td>
+                            <td ><div class="col-xs-5"><form action="@Url.Action("SuaSoLuong")" method="get">
+                                    <input type="hidden" name="id" value="@dr["ID"].ToString()"  />
+                                    <input type="number"class="form-control" min="1" step="1" name="slm"  value="@dr["Số lượng"].ToString()"/>
+                                    <button type="submit" class="btn btn-primary btn-xs"> Cập nhật </button>
+                                  
+                                </form></div></td>
+                            <td>@dr["Thành Tiền"].ToString() VNĐ</td> 
+                            <td>  <a class="btn btn-success btn-sm" href="@Url.Action("delete", "Shopping", new {@id=dr["ID"].ToString()  })">
+             <span class="glyphicon glyphicon-trash"></span>  </a></td>   
+                        </tr>  
+                   }  
+                  
+</table>
+<h6>Tổng Số Lượng Sản Phẩm = @ViewBag.count sản phẩm</h6>
+<br />
+<h6>Tổng Tiền = @ViewBag.tongtien VNĐ</h6>
+<br />
+<br />
+  @Html.Partial("_thanhtoan")

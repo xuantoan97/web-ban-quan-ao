@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CongNgeWeb.Entities.HangHoaBan>
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng của thành viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Chi tiết của đơn hàng : Mã @ViewBag.IDDONHANG</h5>
+
+<table class="table table-hover">
+    <tr class="success">
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+          Tên sản phẩm
+        </th>
+        <th>
+           Hình Ảnh
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+           Số Lượng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.link_anh)" width="40" height="40"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sl)
+        </td>
+    </tr>
+}
+
+</table>
+<a href="~/Home/Index" style="color:blue">Quay lại</a>

@@ -1,0 +1,42 @@
+﻿
+@model CongNgeWeb.Models.Account
+@{
+    ViewBag.Title = "Log in";
+}
+<hgroup class="title">
+    <h2>Đăng Nhập</h2>
+</hgroup>
+
+<section id="loginForm">
+<h4>Sử Dụng Một Tài Khoản Để Đăng Nhập.</h4>
+
+
+    <fieldset>
+        <legend>Log in Form</legend>
+       
+         
+               @using (Html.BeginForm("LoginAction", "Login"))
+{
+    @Html.LabelFor(m => m.EMAIL)
+    @Html.TextBoxFor(m => m.EMAIL)
+    <br />
+    @Html.LabelFor(m => m.PASSWORD)
+    @Html.PasswordFor(m => m.PASSWORD)
+    <br />
+    <input type="submit" value="Login">
+
+}
+           
+    </fieldset>
+    <p>
+        <a href="~/Login/Add" style="">Tạo tài khoản,</a> Nếu Bạn Chưa Có Tài Khoản.
+    </p>
+</section>
+
+<section class="social" id="socialLoginForm">
+    
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

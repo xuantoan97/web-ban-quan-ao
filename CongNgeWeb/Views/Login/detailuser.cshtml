@@ -1,0 +1,43 @@
+﻿@model CongNgeWeb.Entities.THANHVIEN
+
+@{
+    ViewBag.Title = "Thông Tin Người Dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<fieldset>
+    <legend>Thông tin người dùng</legend>
+    <div class="display-label">
+        Tên người dùng :  @Html.DisplayFor(model => model.TENTV)
+    </div>
+    <br />
+
+    <div class="display-label">
+        Địa chỉ email :  @Html.DisplayFor(model => model.EMAIL)
+    </div>
+    <br />
+
+    <div class="display-label">
+        Địa chỉ :  @Html.DisplayFor(model => model.DIACHI)
+    </div>
+    <br />
+    <div class="display-label">
+         Ngày sinh :   @Html.DisplayFor(model => model.NG)
+    </div>
+   <br />
+
+    <div class="display-label">
+        Giới tính :  @Html.DisplayFor(model => model.GT)
+    </div>
+   <br />
+    <div class="display-label">
+        Số điện thoại :  @Html.DisplayFor(model => model.SDT)
+    </div>
+</fieldset>
+<p>
+   <a href="~/Login/edituser?ID=@Model.ID" style="color:blue">Sửa thông tin</a> 
+    <a href="~/Login/detailDHofUser?email=@Session["UserName"]" style="color:blue">Lịch sử đặt hàng</a>
+    <a href="~/Home/Index" style="color:blue">Quay Về</a>
+</p>

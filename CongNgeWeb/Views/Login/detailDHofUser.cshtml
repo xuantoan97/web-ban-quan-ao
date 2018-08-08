@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CongNgeWeb.Entities.DONHANG>
+
+@{
+    ViewBag.Title = "Lịch sử đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Lịch sử đặt hàng của @Session["UserName"]</h5>
+
+<table class="table table-hover">
+    <tr class="success">
+        <th>
+            Mã đơn hàng
+        </th>
+        
+        <th>
+            Tên Khách Hàng
+        </th>
+        <th>
+           Số điện thoại
+        </th>
+        <th>
+           Địa chỉ
+        </th>
+        <th>
+           Thời điểm đặt hàng
+        </th>
+        <th>
+           Tổng Tiền
+        </th>
+        <th>
+            Trạng Thái
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDTKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDTDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TONGTIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+        </td>
+        <td>
+            <a href="~/Login/detailCTDHofUser?ID=@item.ID" style="color:blue">chi tiết</a>
+        </td>
+    </tr>
+}
+
+</table>

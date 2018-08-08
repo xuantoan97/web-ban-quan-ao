@@ -1,0 +1,51 @@
+﻿    @model CongNgeWeb.Entities.SanPham
+
+@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<fieldset>
+    <legend>Chi tiết sản phẩm</legend>
+    <div class="display-field">
+       <img  src="@Html.DisplayFor(model => model.LINK_ANH)" />
+    </div>
+    <div class="display-label">
+         Mã Sản Phẩm :   @Html.DisplayFor(model => model.MASP)
+    </div>
+    <br/>
+    <div class="display-label">
+        Tên sản phẩm : @Html.DisplayFor(model => model.TENSP)
+    </div>
+    <br />
+
+    <div class="display-label">
+        Giá sản phẩm : @Html.DisplayFor(model => model.GIASP) VNĐ
+    </div>
+    <br />
+
+    <div class="display-label">
+        Link lưu trữ ảnh :  @Html.DisplayFor(model => model.LINK_ANH)
+    </div>
+    <br />
+
+    <div class="display-label">
+       Mã danh mục :  @Html.DisplayFor(model => model.MADM)
+    </div>
+    <br />
+
+    <div class="display-label">
+        Thời Điểm Tạo :   @Html.DisplayFor(model => model.TDT)
+    </div>
+   <br />
+    <div class="display-label">
+        Tổng số lượng đã được bán :  @Html.DisplayFor(model => model.SLDH)
+    </div>
+   <br />
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "edit", new { @MASP=Model.MASP }) |
+    @Html.ActionLink("Quay Lại Danh Sách", "sp")
+</p>

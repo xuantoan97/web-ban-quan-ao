@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/Content/CSS/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/CSS/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/CSS/assets/fonts/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="~/Content/CSS/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="~/Content/CSS/assets/js/ace-extra.min.js"></script>
+         <link rel="stylesheet" href="~/Content/Site.css" />
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <a href="~/Home/Index"><img src="~/Content/anh/logo1.jpg" width="90" height="50"/></a>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                         @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

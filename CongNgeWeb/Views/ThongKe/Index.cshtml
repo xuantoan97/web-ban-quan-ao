@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Thống Kê";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h4>Thống Kê Số Liệu Từng Ngày.</h4>
+<table class="table table-striped">
+    <tr>
+        <th>
+             &ensp; &ensp; &ensp; &ensp;  &ensp; &ensp; &ensp; &ensp; Ngày
+        </th>
+        <th>
+            &ensp; &ensp; &ensp; &ensp;  &ensp;  &ensp; &ensp; &ensp; &ensp; Tổng Đơn Hàng
+        </th>
+        <th>
+            &ensp; &ensp; &ensp; &ensp;  &ensp; &ensp; &ensp; &ensp; Tổng Số Lượng Sản Phẩm
+        </th>
+        <th>
+             &ensp; &ensp; &ensp; &ensp;  &ensp; &ensp; &ensp; &ensp; Tổng Doanh Thu
+        </th>
+    </tr>
+     @foreach (System.Data.DataRow dr in Model)  
+                    {  
+                        <tr>  
+                       
+                            <td> @dr["Ngày"].ToString() </td>  
+                         
+                           <td>@dr["Tổng Số Đơn Hàng"].ToString()</td>
+                            <td>@dr["Tổng Số Lượng Sản Phẩm"].ToString()</td>
+                            <td>@dr["Tổng Doanh Thu"].ToString() VNĐ</td>
+                            
+                        </tr>  
+                   }  
+                  
+</table>

@@ -1,0 +1,116 @@
+﻿@model CongNgeWeb.Entities.ViewModel.DHofTV
+
+@{
+    ViewBag.Title = "Chi Tiết Thành Viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<fieldset>
+    <legend>Thông tin của thành viên.</legend>
+     <div class="display-label">
+         ID :  @Html.DisplayFor(model => model.THANHVIEN.ID)
+    </div>
+    <br />
+
+    <div class="display-label">
+        Họ Tên : @Html.DisplayFor(model => model.THANHVIEN.TENTV)
+    </div>
+    <br />
+
+    <div class="display-label">
+       Email :   @Html.DisplayFor(model => model.THANHVIEN.EMAIL)
+    </div>
+    <br />
+    <div class="display-label">
+       Địa chỉ :   @Html.DisplayFor(model => model.THANHVIEN.DIACHI)
+    </div>
+    <br />
+
+    <div class="display-label">
+      Pass : @Html.DisplayFor(model => model.THANHVIEN.PASSWORD)
+    </div>
+    
+    <br />
+    <div class="display-label">
+        NGày sinh :  @Html.DisplayFor(model => model.THANHVIEN.NG)
+    </div>
+    <br />
+
+    <div class="display-label">
+         Giới tinh : @Html.DisplayFor(model => model.THANHVIEN.GT)
+    </div>
+   <br />
+    <div class="display-label">
+        SĐT :  @Html.DisplayFor(x => x.THANHVIEN.SDT)
+    </div>
+    <br />
+    <div class="display-label">
+       Ngày Đk:  @Html.DisplayFor(model => model.THANHVIEN.NGAYDK)
+   
+    </div>
+   
+</fieldset>
+<br />
+<h5>Thông tin hoạt động:</h5>
+<br />
+<table class="table table-hover">
+    <tr class="success">
+        <th>
+            Mã đơn hàng
+        </th>
+        
+        <th>
+            Tên Khách Hàng
+        </th>
+        <th>
+           Số điện thoại
+        </th>
+        <th>
+           Địa chỉ
+        </th>
+        <th>
+           Thời điểm đặt hàng
+        </th>
+        <th>
+           Tổng Tiền
+        </th>
+        <th>
+            Trạng Thái
+        </th>
+    </tr>
+
+@foreach (var item in @Model.ListDH) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDTKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDTDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TONGTIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+        </td>
+
+    </tr>
+}
+
+</table>
+
+<p>
+   
+    @Html.ActionLink("Back to List", "tv")
+</p>

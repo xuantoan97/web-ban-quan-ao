@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<CongNgeWeb.Entities.SanPham>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Quản Lý Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Danh sách sản phẩm.</h3>
+
+<p>
+    @Html.ActionLink("Thêm mới sản phẩm", "add","ADmin")
+</p>
+<table class=" table-bordered" >
+    <tr class="success">
+        <th>
+           &nbsp&nbsp Mã Sản Phẩm
+        </th>
+        <th>
+            &nbsp &nbsp Tên Sản Phẩm
+        </th>
+        <th>
+             &nbsp Giá Sản Phẩm(VNĐ)  &nbsp
+        </th>
+        <th >
+           
+             &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Link Ảnh
+        </th>
+        <th>
+           Hình Ảnh
+        </th>
+        <th>
+          &nbsp  Mã Danh Mục &nbsp
+        </th>
+       <th>
+          &nbsp  Ngày Thêm Sản Phẩm &nbsp
+        </th>
+        <th>
+                 &nbsp  SLĐH &nbsp
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr >
+        <td>
+            @Html.DisplayFor(modelItem => item.MASP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIASP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LINK_ANH)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.LINK_ANH)" width="40" height="40" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MADM)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.TDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLDH)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "edit", new { @MASP=item.MASP }) |
+            @Html.ActionLink("Chi Tiết", "detail", new {  @MASP=item.MASP }) |
+            @Html.ActionLink("Xóa", "delete", new {  @MASP=item.MASP  })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                @Html.PagedListPager(Model, PageNum => Url.Action("sp", new { PageNum }))
+                            </div>
+                        </div>

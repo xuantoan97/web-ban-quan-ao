@@ -1,0 +1,36 @@
+﻿@model CongNgeWeb.Entities.DONHANG
+
+@{
+    ViewBag.Title = "Sửa Trạng Thái Đơn Hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Sửa thông tin đơn hàng</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        
+
+        <div class="editor-label">
+         Trạng Thái Đơn Hàng
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRANGTHAI)
+            @Html.ValidationMessageFor(model => model.TRANGTHAI)
+        </div>
+
+        <p>
+            <input type="submit" value="Hoàn Tất" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "dh","ADmin")
+</div>
+

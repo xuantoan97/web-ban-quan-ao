@@ -1,0 +1,55 @@
+﻿@model CongNgeWeb.Entities.SanPham
+
+@{
+    ViewBag.Title = "delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>SanPham</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TENSP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TENSP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GIASP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GIASP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LINK_ANH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LINK_ANH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MADM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MADM)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TDT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TDT)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

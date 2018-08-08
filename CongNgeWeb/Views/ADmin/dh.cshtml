@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<CongNgeWeb.Entities.DONHANG>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Quản Lý Đơn Hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4>Danh sách đơn hàng</h4>
+   
+<table class="table table-hover">
+    <tr class="success">
+        <th>
+            ID đơn hàng
+        </th>
+        <th>
+           ID(nếu là thành viên)
+        </th>
+        <th>
+           Tên Khách Hàng
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+           Địa chỉ KH
+        </th>
+        <th>
+           Thời Điểm Tạo Đơn Hàng
+        </th>
+        <th>
+           Tổng Tiền
+        </th>
+        <th>
+            Trạng Thái
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.ID)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTHANHVIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDTKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDTDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TONGTIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+        </td>
+        <td>
+           <a href="~/ADmin/editDH?ID=@item.ID" style="color:blue">Sửa |</a>
+           <a href="~/ADmin/detailDH?ID=@item.ID" style="color:blue">Chi Tiết |</a>
+            <a href="~/ADmin/deleteDH?ID=@item.ID" style="color:blue">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>
+<div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                @Html.PagedListPager(Model, PageNum => Url.Action("dh", new { PageNum }))
+                            </div>
+                        </div>

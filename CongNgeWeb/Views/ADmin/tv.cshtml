@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<CongNgeWeb.Entities.THANHVIEN>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Quản Lý Thành Viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh Sách Thành Viên</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Tên Thành Viên
+        </th>
+        <th>
+            Địa Chỉ Email
+        </th>
+        <th>
+            Mật Khẩu
+        </th>
+         <th>
+           Địa Chỉ
+        </th>
+        <th>
+            Số Điện Thoại
+        </th>
+         <th>
+             Ngày sinh
+         </th>
+         <th>
+             Giới tính
+         </th>
+        <th>
+            Thời Điểm Đăng Ký
+        </th>
+    
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+             @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENTV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIACHI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GT)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.NGAYDK)
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "DetailTV", new { @ID=item.ID }) |
+            @Html.ActionLink("Xóa", "DeleteTV", new { @ID=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                @Html.PagedListPager(Model, PageNum => Url.Action("tv", new { PageNum }))
+                            </div>
+                        </div>

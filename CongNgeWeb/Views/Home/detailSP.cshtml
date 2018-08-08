@@ -1,0 +1,68 @@
+﻿@model CongNgeWeb.Entities.ViewModel.CMTofSP
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3> @Model.SanPham.TENSP</h3>
+<br />
+<br />
+<table>
+    <tr>
+        <td>
+<div>
+    <img  src="@Model.SanPham.LINK_ANH" width="400" height="400" />
+</div>
+            </td>
+<td>
+    <div>
+    Mã sản phẩm : @Model.SanPham.MASP
+    </div>
+<br />
+    <div>
+    Giá : @Model.SanPham.GIASP vnđ
+        </div>
+<br />
+    <div>
+    Tổng sản phẩm được bán : @Model.SanPham.SLDH
+        </div>
+<br />
+    <div>
+    Tổng số phản hổi : @ViewBag.SLBL
+        </div>
+    <br />
+    <div>
+        <a class="btn btn-success btn-sm" href="~/Shopping/Add?MASP=@Model.SanPham.MASP">
+             <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </a>
+    </div>
+    </td>
+        </tr>
+</table>
+<br />
+<div>
+<h5>Phản hồi của người mua hàng:</h5>
+<cite style="color:red;font-size:12px" >Để comment bạn phải đăng nhập</cite>
+<br />
+<div class="col-xs-5"><form action="@Url.Action("AddBL")" method="get">
+                                    <input type="hidden" name="MASP" value="@Model.SanPham.MASP"/>
+                                    <textarea rows="4" cols="50" placeholder="viết phản hồi ở đây..." maxlength="500" name="COMMENT" ></textarea>
+                                    <button type="submit" class="btn btn-primary btn-xs"> Bình luận </button>
+    </form>
+    <table>
+@foreach(var i in @Model.listBL)
+{
+    <tr>
+        <td>
+            <p>@i.COMMENT</p>
+           
+            <cite style="font-size:12px" >@i.EMAIL-ngày @i.NGAYCM</cite>
+        </td>
+    </tr>
+}
+    </table>
+<p>
+   <a href="~/Home/Index" style="color:blue">Quay Về</a>
+</p>
+    </div>
+    </div>

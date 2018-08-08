@@ -1,0 +1,15 @@
+﻿@using CongNgeWeb.Controllers
+@if (@Session["UserName"]!=null) {
+    
+  
+               <a  href="~/THANHTOAN/Add1?email=@Session["UserName"]" class="btn btn-success btn-block">Đặt Hàng ngay!<i class="fa fa-angle-right"></i></a>
+            
+          
+        }
+    
+ else {
+ 
+    
+              <a  href="~/THANHTOAN/Add2" class="btn btn-success btn-block">Đặt Hàng Không Đăng Nhập<i class="fa fa-angle-right"></i></a>
+       
+}
